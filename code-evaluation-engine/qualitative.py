@@ -1,5 +1,11 @@
 from google import genai
 import re
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv("api_key")
 
 
 def run_qualitative_analysis(source_file_path, prompt_template_path):
@@ -8,7 +14,7 @@ def run_qualitative_analysis(source_file_path, prompt_template_path):
     with open(prompt_template_path, 'r') as f:
         prompt_template = f.read()
     prompt = prompt_template.replace('{source_code}', source_code)
-    client = genai.Client(api_key="AIzaSyA6viwZuyjHhrc38a5TXh0uJvsJ2zFtGDs")
+    client = genai.Client(api_key=api_key)
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,

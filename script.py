@@ -45,9 +45,15 @@ def analyze_code(source_file):
     print("Static analysis score (deterministic): ", quant_score)
     qual_score = parse_qualitative_score(qualitative_results)
     print("LLM-as-a-judge analysis (heuristic): ", qual_score)
-    
-    final_score = ((quant_score*0.2) + (qual_score*0.8))
-    
+    score_diff = abs(quant_score - qual_score)
+    if score_diff > 30:
+        # Large difference, trust LLM more
+        final_score = (quant_score * 0.2) + (qual_score * 0.8)
+        print("Weighting: 20% static analysis, 80% LLM (diff > 30)")
+    else:
+        # Smaller difference, trust LLM but static a bit more
+        final_score = (quant_score * 0.3) + (qual_score * 0.7)
+        print("Weighting: 30% static analysis, 70% LLM (diff <= 30)")
     return final_score
 
 if __name__ == "__main__":
