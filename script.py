@@ -46,7 +46,7 @@ def analyze_code(source_file):
     qual_score = parse_qualitative_score(qualitative_results)
     print("LLM-as-a-judge analysis (heuristic): ", qual_score)
     
-    final_score = (quant_score + qual_score) // 2
+    final_score = ((quant_score*0.2) + (qual_score*0.8))
     
     return final_score
 
