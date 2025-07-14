@@ -7,6 +7,8 @@
 
 This project provides a robust framework for evaluating C source code (especially Linux kernel drivers) using both static analysis (Cppcheck) and qualitative LLM-based analysis (Google Gemini). The system combines deterministic and heuristic scoring, dynamically weighting results to produce a final score out of **100**.
 
+<img width="851" height="643" alt="image" src="https://github.com/user-attachments/assets/bf9d8772-1245-4919-b527-9cfac2dd68ad" />
+
   
 
 ## Features
