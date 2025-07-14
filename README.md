@@ -77,7 +77,13 @@ script.py # Main orchestration script
 
 - Parses the LLM's response to extract a score (out of 100).
 
-- The prompt for the LLM involves an internally segmented rubric that can be found at `prompt.txt`.
+- The prompt for the LLM involves an internally segmented rubrics:
+
+		- Correctness (40% Weight): Checks if the code compiles, works as intended, and properly uses kernel APIs and conventions.
+		- Security & Safety (25% Weight): Focuses on preventing vulnerabilities: secure user-kernel data transfer, proper resource cleanup, protection against race conditions, and valid input handling.
+		- Code Quality (20% Weight): Evaluates adherence to kernel coding style, robust error handling, clear documentation, and maintainable structure.
+		- Performance (10% Weight): Assesses algorithmic efficiency (avoiding slowdowns like locking too long) and responsible memory usage.
+		- Advanced Features (5% Weight): Looks for the use of modern kernel practices (e.g., Device Tree, power management) and integrated debuggability.
 
   
 
