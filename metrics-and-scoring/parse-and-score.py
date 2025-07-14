@@ -49,14 +49,18 @@ def run_cppcheck(source_file_or_dir, output_xml="cppcheck_report.xml", enable_ch
         return None
 
 def parse_and_score_cppcheck_results(cppcheck_results):
+    # Full severity_weights dictionary including all severities from the reference
     severity_weights = {
-        'error': 10,
-        'warning': 5,
-        'style': 2,
-        'performance': 3,
-        'portability': 2,
-        'information': 1
+    'none': 0,            # No severity (default value)
+    'error': 10,          # Programming error. Severe error like memory leak etc. The error is certain.
+    'warning': 5,         # Dangerous coding style that can cause severe runtime errors.
+    'style': 2,           # General code cleanup recommendations.
+    'performance': 3,     # Suboptimal code; fixing leads to faster performance.
+    'portability': 2,     # Code not properly portable for different platforms/bitnesses.
+    'information': 1,     # Information about the checking process itself.
+    'debug': 0            # Debug-mode message useful for developers.
     }
+
     
     total_penalty = 0
     

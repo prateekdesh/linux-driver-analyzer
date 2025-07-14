@@ -62,8 +62,3 @@ def run_cppcheck(source_file_or_dir, output_xml="cppcheck_report.xml", enable_ch
     except ET.ParseError:
         print(f"Error parsing Cppcheck XML report from {output_xml}. Check if the file was generated correctly.")
         return None
-    
-
-results = run_cppcheck("code-evaluation-engine/bruh.c", output_xml="cppcheck_report.xml", enable_checks="all")
-if results:
-    print(json.dumps(results, indent=2))

@@ -138,3 +138,9 @@ cython_debug/
 
 # VS Code settings
 .vscode/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.staging
